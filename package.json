@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "iso-639-1": "^2.0.5",
     "react": "^16.8.6",
     "react-circular-progressbar": "^1.0.0",
     "react-dom": "^16.8.6",
