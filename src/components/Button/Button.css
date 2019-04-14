@@ -1,0 +1,30 @@
+.tab_button{
+    line-height: 1;
+    padding: 10px 25px;
+    margin: auto 5px;
+    color: gray;
+    border-bottom: 2px solid transparent;
+    border-radius: 2px;
+    user-select: none;
+}
+
+.tab_button:hover{
+    background: #eae7e7;
+    cursor: pointer;
+}
+
+.tab_button:active{
+    background: #d6d4d4;
+    cursor: pointer;
+}
+
+
+.tab_button p {
+    margin: 0px;
+    font-weight: 700;
+}
+
+.button_active {
+    border-bottom: 2px solid purple;
+    color: black;
+}
