@@ -2,14 +2,131 @@
 
 html,
 body{
-  height: 100%;
-  width: 100%;
-  margin: 0; 
+  height: 100vh;
+  width: 100vw;
+  padding: 0px; 
   background: #f2f2f2;
 }
 
 * {
   box-sizing: border-box;
+  margin: 0px;  
+}
+
+#site-header{
+  height: 100px;
+  padding: 10px 40px;
+  background: #0f1a4e;
+  z-index: 20;
+  position: relative;
+}
+
+.site-header-inner-container{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height:100%;
+  max-width:75%;
+  margin:auto;
+}
+
+#site-header h1{
+  margin: 0px;
+  color: #fff;
+}
+
+.content-header{
+  height: 60px;
+  padding: 10px 40px;
+  background: white;
+  box-shadow: 0px 1px 20px 0px grey;
+}
+
+.content-header-inner-container{
+  display: flex;
+  align-items: center;
+  max-width: 75%;
+  margin:auto; 
+}
+
+.content-header h3{
+  font-size: 1.5em;
+  margin-right: 15px;
+}
+
+.content-container{
+  margin: 0px auto;
+  padding: 40px 40px;
+  display:grid;
+  max-width: 70%;
+  grid-template-columns: repeat(4, 1fr [col-start]) ;
+  grid-column-gap: 30px;
+  justify-content: center;
+  justify-items: center;
+  overflow: hidden;
 }
 
 
+
+@media all and (min-width: 1921px){
+  .content-container{
+    max-width: 1350px;
+  }
+  .content-header-inner-container{
+    max-width: 1450px;
+  }
+  .site-header-inner-container{
+    max-width: 1450px;
+  }
+}
+
+
+@media all and (max-width: 1920px){
+  .content-container{
+    max-width: 70%;
+  }
+}
+
+@media all and (max-width: 1600px) { 
+  .content-container{
+    grid-template-columns: repeat(3, 1fr [col-start]) ;
+  }
+}
+
+@media all and (max-width: 1199px) { 
+  .content-container{
+    max-width: 85%;
+  }
+  .content-header-inner-container{
+    max-width: 85%;
+  }
+  .site-header-inner-container{
+    max-width: 85%;
+  }
+} 
+@media all and (max-width: 991px) { 
+  .content-container{
+    max-width: 90%;
+    grid-column-gap: 0px;
+  }
+  .content-header-inner-container{
+    max-width: 90%;
+  }
+  .site-header-inner-container{
+    max-width: 90%;
+  }
+ } 
+@media all and (max-width: 768px) { 
+  .content-container{
+    max-width: 90%;
+    grid-template-columns: repeat(2, 1fr [col-start]);
+    grid-column-gap: 0px;
+  }
+  .content-header-inner-container{
+    max-width: 90%;
+  }
+  .site-header-inner-container{
+    max-width: 90%;
+  }
+ } 
+@media all and (max-width: 575px) {  }

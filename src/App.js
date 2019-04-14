@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import MovieCard from './components/MovieCard/MovieCard';
+import Button from './components/Button/Button';
 
 class App extends Component {
   dummyMovie = {
@@ -29,7 +30,50 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <MovieCard movie={this.dummyMovie}/>
+        <div id="site-header">
+        <div className="site-header-inner-container">
+          <h1>Movies and Chill</h1>
+          </div>
+        </div>
+
+        <div className="content-header">
+        <div className="content-header-inner-container">
+          <h3>Browse</h3>
+          <Button text="Popular" onClick={()=>{}} isActive={true}/>
+          <Button text="Trending" onClick={()=>{}}/>
+        </div>
+        </div>
+        <div className="content-container">
+          <MovieCard movie={this.dummyMovie}/>
+          <MovieCard movie={this.dummyMovie}/>
+          <MovieCard movie={this.dummyMovie}/>
+          <MovieCard movie={this.dummyMovie}/>
+          <MovieCard movie={this.dummyMovie}/>
+          <MovieCard movie={this.dummyMovie}/>
+          <MovieCard movie={this.dummyMovie}/>
+          <MovieCard movie={this.dummyMovie}/>
+          <MovieCard movie={this.dummyMovie}/>
+          <MovieCard movie={this.dummyMovie}/>
+          <MovieCard movie={this.dummyMovie}/>
+          <MovieCard movie={this.dummyMovie}/>
+          <MovieCard movie={this.dummyMovie}/>
+          <MovieCard movie={this.dummyMovie}/>
+          <MovieCard movie={this.dummyMovie}/>
+          <MovieCard movie={this.dummyMovie}/>
+          <MovieCard movie={this.dummyMovie}/>
+          <MovieCard movie={this.dummyMovie}/>
+          <MovieCard movie={this.dummyMovie}/>
+          <MovieCard movie={this.dummyMovie}/>
+          <MovieCard movie={this.dummyMovie}/>
+          <MovieCard movie={this.dummyMovie}/>
+          <MovieCard movie={this.dummyMovie}/>
+          <MovieCard movie={this.dummyMovie}/>
+          <MovieCard movie={this.dummyMovie}/>
+          <MovieCard movie={this.dummyMovie}/>
+          <MovieCard movie={this.dummyMovie}/>
+          <MovieCard movie={this.dummyMovie}/>
+        </div>
+        
       </div>
     );
   }
