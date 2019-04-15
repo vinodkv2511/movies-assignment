@@ -3,30 +3,17 @@ import logo from './logo.svg';
 import './App.css';
 import MovieCard from './components/MovieCard/MovieCard';
 import Button from './components/Button/Button';
+import { changeTab } from './actions/homeActions'
+import { connect } from 'react-redux';
+import constants from './constants';
+import Home from './containers/Home/Home';
 
-class App extends Component {
-  dummyMovie = {
-    "vote_count": 545,
-    "id": 512196,
-    "video": false,
-    "vote_average": 6.1,
-    "title": "Happy Death Day 2U - A womens anger is a mans nightmare",
-    "popularity": 83.495,
-    "poster_path": "/4tdnePOkOOzwuGPEOAHp8UA4vqx.jpg",
-    "original_language": "en",
-    "original_title": "Happy Death Day 2U",
-    "genre_ids": [
-        27,
-        9648,
-        53,
-        878,
-        35
-    ],
-    "backdrop_path": "/dhNJHBDacrZjSPtwaiwp3idpzxU.jpg",
-    "adult": false,
-    "overview": "Collegian Tree Gelbman wakes up in horror to learn that she's stuck in a parallel universe. Her boyfriend Carter is now with someone else, and her friends and fellow students seem to be completely different versions of themselves. When Tree discovers that Carter's roommate has been altering time, she finds herself once again the target of a masked killer. When the psychopath starts to go after her inner circle, Tree soon realizes that she must die over and over again to save everyone.",
-    "release_date": "2019-02-13"
+export class App extends Component {
+
+componentDidMount(){
+  this.props.setActiveTab(constants.tabs.TRENDING)
 }
+
   render() {
     return (
       <div className="App">
@@ -36,42 +23,8 @@ class App extends Component {
           </div>
         </div>
 
-        <div className="content-header">
-        <div className="content-header-inner-container">
-          <h3>Browse</h3>
-          <Button text="Popular" onClick={()=>{}} isActive={true}/>
-          <Button text="Trending" onClick={()=>{}}/>
-        </div>
-        </div>
-        <div className="content-container">
-          <MovieCard movie={this.dummyMovie}/>
-          <MovieCard movie={this.dummyMovie}/>
-          <MovieCard movie={this.dummyMovie}/>
-          <MovieCard movie={this.dummyMovie}/>
-          <MovieCard movie={this.dummyMovie}/>
-          <MovieCard movie={this.dummyMovie}/>
-          <MovieCard movie={this.dummyMovie}/>
-          <MovieCard movie={this.dummyMovie}/>
-          <MovieCard movie={this.dummyMovie}/>
-          <MovieCard movie={this.dummyMovie}/>
-          <MovieCard movie={this.dummyMovie}/>
-          <MovieCard movie={this.dummyMovie}/>
-          <MovieCard movie={this.dummyMovie}/>
-          <MovieCard movie={this.dummyMovie}/>
-          <MovieCard movie={this.dummyMovie}/>
-          <MovieCard movie={this.dummyMovie}/>
-          <MovieCard movie={this.dummyMovie}/>
-          <MovieCard movie={this.dummyMovie}/>
-          <MovieCard movie={this.dummyMovie}/>
-          <MovieCard movie={this.dummyMovie}/>
-          <MovieCard movie={this.dummyMovie}/>
-          <MovieCard movie={this.dummyMovie}/>
-          <MovieCard movie={this.dummyMovie}/>
-          <MovieCard movie={this.dummyMovie}/>
-          <MovieCard movie={this.dummyMovie}/>
-          <MovieCard movie={this.dummyMovie}/>
-          <MovieCard movie={this.dummyMovie}/>
-          <MovieCard movie={this.dummyMovie}/>
+        <div className="body-container">
+            <Home/>
         </div>
         
       </div>
@@ -79,4 +32,20 @@ class App extends Component {
   }
 }
 
-export default App;
+
+const mapStateToProps = (state) => {
+  return {
+    activeTab : state.home.activeTab
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setActiveTab: (tabName) => {
+      dispatch(changeTab(tabName))
+    }
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
