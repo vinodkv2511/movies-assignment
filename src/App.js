@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import constants from './constants';
 import Home from './containers/Home/Home';
 import MovieDetails from './containers/MovieDetails/MovieDetails';
+import CastDetails from './containers/CastDetails/CastDetails';
 
 export class App extends Component {
 
@@ -28,7 +29,7 @@ export class App extends Component {
             <Route path="/" exact render={() => <Redirect to="/home" />} />
             <Route path="/home" exact component={Home} />
             <Route path="/movie/:movie_id" exact component={MovieDetails} />
-            {/* <Route path="/cast/:id" exact component={CastDetails}/> */}
+            <Route path="/cast/:id" exact component={CastDetails}/>
 
           </div>
         </Router>
