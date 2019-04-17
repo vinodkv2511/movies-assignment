@@ -1,0 +1,46 @@
+.small-card-container{
+    width: 180px;
+    min-width:180px;
+    display: inline-flex;
+    align-items:center;
+    flex-direction: column;
+    margin: 10px 10px;
+    background: white;
+    border-radius: 10px;
+    overflow:hidden;
+    padding-bottom: 8px;
+    min-height: 318px;
+}
+
+.small-card-image-container{
+    width:100%;
+    height:220px;
+    overflow: hidden;
+}
+
+.small-card-container img{
+    width: 100%;    
+    min-height:100%;
+}
+
+.small-card-image-container img{
+    user-select: none;
+}
+
+.small-card-main-text{
+    font-weight: 700;
+    align-self: flex-start;
+    margin: 10px 0px 0px 0px;
+    padding: 0px 8px;
+}
+
+.small-card-sub-text{
+    color:gray;
+    font-size: 0.8em;
+    align-self: flex-start;
+    padding: 0px 8px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 95%;
+}

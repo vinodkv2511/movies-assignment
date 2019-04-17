@@ -5,6 +5,7 @@ import ISOLang from 'iso-639-1';
 
 import { getMovie, getCast, clearMovieAndCast } from '../../actions/movieActions'
 import './MovieDetails.css'
+import SmallCard from '../../components/SmallCard/SmallCard';
 
 
 class MovieDetails extends Component {
@@ -32,14 +33,7 @@ class MovieDetails extends Component {
         let actorCards = []
         actors.forEach(actor => {
             actorCards.push(
-                <div className="movie-details-cast-card" key={actor.id}>
-                    <div className="movie-details-image-container">
-                        <img src={"https://image.tmdb.org/t/p/w500" + actor['profile_path']} />
-                    </div>
-                    
-                    <p className="cast-card-name">{actor.name}</p>
-                    <p className="cast-card-character-name" >{actor.character}</p>
-                </div>
+                <SmallCard key={actor.id} linkTo={"/cast/"+actor.id} posterPath={actor.profile_path} mainText={actor.name} subText={actor.character} />
             )
 
         });
@@ -52,7 +46,7 @@ class MovieDetails extends Component {
         if (this.props.movie.title) {
             return ([
 
-                <div className="movie-details-back-button"><Link to="/home"><i class="fas fa-arrow-left"></i> Back</Link></div>,
+                <div className="movie-details-back-button"><Link to="/home"><i className="fas fa-arrow-left"></i> Back</Link></div>,
                 <div className="movie-details-container">
                     <img className="main-movie-details-backdrop" alt="poster" src={"https://image.tmdb.org/t/p/w500" + this.props.movie['backdrop_path']} />
                     <div className="main-movie-details-container">
