@@ -18,7 +18,7 @@ export const getMovieService = (movie_id) => {
     return fetch(url)
 }
 
-export const getCastService = (movie_id) => {
+export const getCastOfMovieService = (movie_id) => {
     
     let query_params = [
         {
