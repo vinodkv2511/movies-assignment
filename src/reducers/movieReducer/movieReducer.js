@@ -1,4 +1,4 @@
-import consts, {action_constants} from '../../constants'
+import {action_constants} from '../../constants'
 
 const initialState = {
     movie: {},

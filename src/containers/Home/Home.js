@@ -22,30 +22,30 @@ class Home extends Component {
                 <div className="content-header">
                     <div className="content-header-inner-container">
                         <h3>Browse</h3>
-                        <Button text="Popular" onClick={() => { this.props.setActiveTab(constants.tabs.POPULAR) }} isActive={constants.tabs.POPULAR == this.props.activeTab} />
-                        <Button text="Trending" onClick={() => { this.props.setActiveTab(constants.tabs.TRENDING) }} isActive={constants.tabs.TRENDING == this.props.activeTab} />
-                        <Button text="Search" onClick={() => { this.props.setActiveTab(constants.tabs.SEARCH) }} isActive={constants.tabs.SEARCH == this.props.activeTab} />
-                        { this.props.activeTab == constants.tabs.SEARCH ?  <SearchBar keyword={this.props.searchKeyword} onChange={(event)=>{this.props.fetchSearchMovies(event.target.value, this.props.searchPage)}}/> : null }
+                        <Button text="Popular" onClick={() => { this.props.setActiveTab(constants.tabs.POPULAR) }} isActive={constants.tabs.POPULAR === this.props.activeTab} />
+                        <Button text="Trending" onClick={() => { this.props.setActiveTab(constants.tabs.TRENDING) }} isActive={constants.tabs.TRENDING === this.props.activeTab} />
+                        <Button text="Search" onClick={() => { this.props.setActiveTab(constants.tabs.SEARCH) }} isActive={constants.tabs.SEARCH === this.props.activeTab} />
+                        { this.props.activeTab === constants.tabs.SEARCH ?  <SearchBar keyword={this.props.searchKeyword} onChange={(event)=>{this.props.fetchSearchMovies(event.target.value, this.props.searchPage)}}/> : null }
                     </div>
                 </div>
                 <div className="content-container">
                 
-                    {   this.props.activeTab == constants.tabs.POPULAR ? 
+                    {   this.props.activeTab === constants.tabs.POPULAR ? 
                         <MoviesList movies={ this.props.popularMovies} /> :
-                        this.props.activeTab == constants.tabs.TRENDING ?
+                        this.props.activeTab === constants.tabs.TRENDING ?
                         <MoviesList movies={ this.props.trendingMovies} /> :
-                        this.props.activeTab == constants.tabs.SEARCH ?
+                        this.props.activeTab === constants.tabs.SEARCH ?
                         <MoviesList movies={ this.props.searchMovies} /> : ""
                     }
                     
                     
                 </div>
                 
-                {   this.props.activeTab ==  constants.tabs.POPULAR ? 
+                {   this.props.activeTab ===  constants.tabs.POPULAR ? 
                     <Pagination activePage = {this.props.popularPage} pageCount = { this.props.popularPageCount } pageChanged={this.handlePageChange}/> : 
-                    this.props.activeTab ==  constants.tabs.TRENDING ?
+                    this.props.activeTab ===  constants.tabs.TRENDING ?
                     <Pagination activePage= {this.props.trendingPage} pageCount = { this.props.trendingPageCount } pageChanged={this.handlePageChange} /> :
-                    this.props.activeTab ==  constants.tabs.SEARCH ?
+                    this.props.activeTab ===  constants.tabs.SEARCH ?
                     <Pagination activePage= {this.props.searchPage} pageCount = { this.props.searchPageCount } pageChanged={this.handlePageChange} /> : ""
                 }
                 
@@ -59,13 +59,15 @@ class Home extends Component {
     }
 
     componentDidUpdate(prevProps){
-        if(prevProps.activeTab != this.props.activeTab){
+        if(prevProps.activeTab !== this.props.activeTab){
             switch(this.props.activeTab){
                 case constants.tabs.POPULAR:
                     this.props.fetchPopularMovies(this.props.popularPage)
                     break
                 case constants.tabs.TRENDING:
                     this.props.fetchTrendingMovies(this.props.trendingPage, "day")
+                    break;
+                default:
                     break;
             }
         }
@@ -74,13 +76,13 @@ class Home extends Component {
 
 
     handlePageChange = (newPage) => {
-        if(this.props.activeTab == constants.tabs.POPULAR) {
+        if(this.props.activeTab === constants.tabs.POPULAR) {
             this.props.fetchPopularMovies(newPage)
         }
-        else if (this.props.activeTab == constants.tabs.TRENDING) {
+        else if (this.props.activeTab === constants.tabs.TRENDING) {
             this.props.fetchTrendingMovies(newPage)
         }
-        else if (this.props.activeTab == constants.tabs.SEARCH) {
+        else if (this.props.activeTab === constants.tabs.SEARCH) {
             this.props.fetchSearchMovies(this.props.searchKeyword, newPage)
         }
     }

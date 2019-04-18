@@ -11,7 +11,7 @@ import CastDetails from './containers/CastDetails/CastDetails';
 export class App extends Component {
 
   componentDidMount() {
-    this.props.setActiveTab(constants.tabs.TRENDING)
+    this.props.setActiveTab(constants.tabs.POPULAR)
   }
 
   render() {

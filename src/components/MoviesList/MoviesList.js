@@ -7,7 +7,7 @@ import './MoviesList.css'
 const MoviesList = (props) => {
     let movieCards = []
     props.movies.forEach(movie => {
-        movieCards.push(<Link to={"/movie/"+movie.id}><MovieCard movie={movie} key={movie.id}/> </Link>)
+        movieCards.push(<Link to={"/movie/"+movie.id} key={movie.id}><MovieCard movie={movie} /> </Link>)
     })
     return (
         <div className="movies-list-container">

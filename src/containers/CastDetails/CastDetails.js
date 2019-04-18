@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import './CastDetails.css';
 import { getCastDetails, getMoviesOfCast, clearCastAndMoviesOfCast } from '../../actions/castActions'
 import SmallCard from '../../components/SmallCard/SmallCard';
+import constants, { url_constants } from '../../constants'
 
 class CastDetails extends Component {
 
@@ -33,7 +33,7 @@ class CastDetails extends Component {
                 <div className="cast-details-back-button" onClick={()=>this.props.history.goBack()}><i className="fas fa-arrow-left"></i> Back</div>,
                 <div className="cast-details-container">
                     <div className="main-cast-details-container">
-                        <img className="main-cast-details-poster" alt="poster" src={"https://image.tmdb.org/t/p/w500" + this.props.cast['profile_path']} />
+                        <img className="main-cast-details-poster" alt="poster" src={ url_constants.IMAGE_BASE+ constants.profileSizes.MEDIUM + this.props.cast['profile_path']} />
                         <div className="cast-details-side-container">
                             <h1 className="cast-details-title">{this.props.cast.name}</h1>
                             <div className="cast-details-year-runtime">
