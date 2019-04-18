@@ -1,0 +1,20 @@
+.search-bar{
+    border : 1px solid gray;
+    padding : 5px 10px;
+    border-radius: 4px;
+    margin-left: auto;
+}
+
+.search-bar input {
+    border : none;
+    margin-left: 5px;
+    font-size: 1.1em;
+}
+
+.search-bar input:focus{
+    outline: none;
+}
+
+.search-bar i{
+    color: gray;
+}

@@ -6,6 +6,9 @@ const initialState = {
     popularMoviesCurrentPage: 1,
     trendingMovies: [],
     trendingMoviesCurrentPage: 1,
+    searchKeyword: "",
+    searchMoviesCurrentPage: 1,
+    searchMovies: []
 }
 const homeReducer = (state= initialState, action) => {
     let newState = {}
@@ -34,9 +37,23 @@ const homeReducer = (state= initialState, action) => {
             newState = {...state}
             newState.trendingMovies = []
             break
-        case action_constants.SEARCH:
-            newState = state
-            break   
+        case action_constants.SEARCH_KEYWORD_CHANGED:
+            newState = {...state}
+            newState.searchKeyword = action.payload
+            break
+        case action_constants.GET_SEARCH_MOVIES_SUCCESS:
+            newState = {...state}
+            newState.searchMovies = [...action.payload.results]
+            newState.searchMoviesCurrentPage = action.payload.page
+            newState.searchMoviesPageCount = action.payload.total_pages
+            break
+        case action_constants.GET_SEARCH_MOVIES_FAILURE:
+            console.log(action.payload)
+            newState = {...state}
+            newState.searchMovies= []
+            newState.searchMoviesCurrentPage = 1
+            newState.searchMoviesPageCount = null
+            break
         default:
             newState = state
             break

@@ -1,5 +1,5 @@
 import { action_constants } from '../constants'
-import { getPopularMovies as popularService, getTrendingMovies as trendingService } from '../services/homeService/homeService'
+import { getPopularMovies as popularService, getTrendingMovies as trendingService, getSearchMovies as searchService } from '../services/homeService/homeService'
 
 
 const changeTab = (tabName)=>{
@@ -59,4 +59,41 @@ const getTrendingMoviesFailure= (error)=> {
     }
 }
 
-export { changeTab, getPopularMovies, getTrendingMovies }
+
+
+const getSearchMovies = (keyword, page) => {
+    return dispatch => {
+        dispatch(setSearchKeyword(keyword))
+        searchService(keyword, page)
+        .then(res => res.json())
+        .then(data=> dispatch(getSearchMoviesSuccess(data)))
+        .catch(err => dispatch(getSearchMoviesFailure(err)))
+    }
+}
+
+const setSearchKeyword = (keyword) => {
+    return {
+        type: action_constants.SEARCH_KEYWORD_CHANGED,
+        payload: keyword
+    }
+}
+
+
+const getSearchMoviesSuccess= (data)=> {
+    return {
+        type: action_constants.GET_SEARCH_MOVIES_SUCCESS,
+        payload: data
+    }
+}
+
+
+const getSearchMoviesFailure= (error)=> {
+    return {
+        type: action_constants.GET_SEARCH_MOVIES_FAILURE,
+        payload: error
+    }
+}
+
+
+
+export { changeTab, getPopularMovies, getTrendingMovies, getSearchMovies }

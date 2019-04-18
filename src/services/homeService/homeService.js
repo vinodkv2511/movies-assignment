@@ -46,4 +46,28 @@ export const getTrendingMovies = ( page, timeWindow=consts.TRENDING_TIME_WINDOW_
     return fetch(url)
 }
 
+export const getSearchMovies = ( keyword, page ) => {
+
+    let query_params = [
+        {
+            key: "api_key",
+            value: API_KEY
+        },
+        {  
+            key: "query",
+            value: keyword
+
+        },
+        {
+            key: "page",
+            value: page
+        }
+    ]
+
+    let url = consts.API_BASE+consts.API_SEARCH_MOVIE
+    url = add_query_params(url, query_params)
+    
+    return fetch(url)
+}
+
 
