@@ -43,10 +43,11 @@ class MovieDetails extends Component {
 
 
     render() {
+        window.scrollTo(0, 0)
         if (this.props.movie.title) {
             return ([
 
-                <div className="movie-details-back-button"><Link to="/home"><i className="fas fa-arrow-left"></i> Back</Link></div>,
+                <div className="movie-details-back-button" onClick={()=>this.props.history.goBack()} ><i className="fas fa-arrow-left"></i> Back</div>,
                 <div className="movie-details-container">
                     <img className="main-movie-details-backdrop" alt="poster" src={"https://image.tmdb.org/t/p/w500" + this.props.movie['backdrop_path']} />
                     <div className="main-movie-details-container">
