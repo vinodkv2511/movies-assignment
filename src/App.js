@@ -29,7 +29,7 @@ export class App extends Component {
             <Route path="/" exact render={() => <Redirect to="/home" />} />
             <Route path="/home" exact component={Home} />
             <Route path="/movie/:movie_id" exact component={MovieDetails} />
-            <Route path="/cast/:id" exact component={CastDetails}/>
+            <Route path="/cast/:cast_id" exact component={CastDetails}/>
 
           </div>
         </Router>

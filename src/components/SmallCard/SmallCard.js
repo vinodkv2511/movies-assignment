@@ -7,7 +7,7 @@ import './SmallCard.css';
 const SmallCard = (props) => {
     return (
         <Link to={props.linkTo}>
-            <div className="small-card-container">
+            <div className={"small-card-container"+" "+props.className}>
                 <div className="small-card-image-container">
                     <img src={"https://image.tmdb.org/t/p/w500/" + props.posterPath} />
                 </div>
