@@ -49,6 +49,8 @@ describe('Rendering .. ', () => {
         expect(wrapper.find('.movie_card_language')).toHaveLength(1)
         expect(wrapper.find('.movie_card_language').text()).toEqual(ISO6391.getName(dummyProps.movie.original_language))
     })
-    it("Should render user score as percentage", ()=>{})
+    it("Should render user score as percentage", ()=>{
+        expect(wrapper.find('.movie_card_details_container').find('p').first().text()).toEqual(dummyProps.movie.vote_average*10+"%")
+    })
 
 })
