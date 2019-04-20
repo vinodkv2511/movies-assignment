@@ -15,7 +15,7 @@ const castDetailsReducer = (state = initialState, action) => {
                 cast: action.payload
             }
             break
-        case action_constants.GET_CAST_DETAILS_FAILURE:
+        case action_constants.GET_CAST_DETAILS_FAILURE: //TODO Call failures need to be handled gracefully
             newState = {
                 ...state
             }
@@ -26,7 +26,7 @@ const castDetailsReducer = (state = initialState, action) => {
                 movies: action.payload.cast
             }
             break
-        case action_constants.GET_MOVIES_OF_CAST_FAILURE:
+        case action_constants.GET_MOVIES_OF_CAST_FAILURE: //TODO Call failures need to be handled gracefully
             newState = {
                 ...state
             }
