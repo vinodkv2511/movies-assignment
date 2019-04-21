@@ -1,3 +1,14 @@
+## Movies and Chill
+
+This is a sample project to show the use of react with redux.
+In this project we are using the the movie database's API's
+
+Before you start this application you need to add a env file in the root directory of this project and add your API key as shown below
+`REACT_APP_TMDB_API_KEY=<Your API key>`
+
+You can obtain your API key from [here](https://www.themoviedb.org/settings/api)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
