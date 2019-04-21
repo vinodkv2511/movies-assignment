@@ -37,6 +37,32 @@
   .content-header-inner-container {
     max-width: 90%;
   }
+  .content-header h3{
+    display: none;
+  }
 }
 @media all and (max-width: 575px) {
+
+  .content-header{
+    padding: 10px 5px;
+  }
+
+  .content-header-inner-container{
+    width:100%;
+  }
+
+  .search-bar{
+    position: absolute;
+    top: 160px;
+    left: 0px;
+    background: white;
+    width: 100%;
+    border: transparent;
+    border-radius: 0px;
+    box-shadow: 0px 0 1px grey;
+  }
+
+  .content-container{
+    margin-top: 20px;
+  }
 }

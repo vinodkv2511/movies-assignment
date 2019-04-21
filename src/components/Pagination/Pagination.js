@@ -34,15 +34,15 @@ class Paginatio extends Component {
             }
 
             let startPages = [
-                <div className={"pagination-page"} onClick={this.handleClick} data-page={"first"} key={"<<"}>{"<<"}</div>,
-                <div className={"pagination-page"} onClick={this.handleClick} data-page={"previous"} key={"<"}>{"<"}</div>,
+                <div className={"pagination-page double-back"} onClick={this.handleClick} data-page={"first"} key={"<<"}>{"<<"}</div>,
+                <div className={"pagination-page back"} onClick={this.handleClick} data-page={"previous"} key={"<"}>{"<"}</div>,
                 <div className={"pagination-page".concat(activePage === 1 ? " active" : "")} onClick={this.handleClick} data-page={1} key={1}>1</div>,
                 <div className={"pagination-page".concat(activePage === 2 ? " active" : "")} onClick={this.handleClick} data-page={2} key={2}>2</div>]
             let endPages = [
                 <div className={"pagination-page".concat(activePage === pageCount - 1 ? " active" : "")} onClick={this.handleClick} data-page={pageCount - 1} key={pageCount - 1}>{pageCount - 1}</div>,
                 <div className={"pagination-page".concat(activePage === pageCount ? " active" : "")} onClick={this.handleClick} data-page={pageCount} key={pageCount} >{pageCount}</div>,
-                <div className={"pagination-page"} onClick={this.handleClick} data-page={"next"} key={">"}>{">"}</div>,
-                <div className={"pagination-page"} onClick={this.handleClick} data-page={"last"} key={">>"}>{">>"}</div>,
+                <div className={"pagination-page double-forward"} onClick={this.handleClick} data-page={"next"} key={">"}>{">"}</div>,
+                <div className={"pagination-page forward"} onClick={this.handleClick} data-page={"last"} key={">>"}>{">>"}</div>,
             ]
             let midPages = []
             if (showStartElipsis && showEndElipsis) {

@@ -18,3 +18,14 @@
 .search-bar i{
     color: gray;
 }
+
+
+@media all and (max-width: 768px) {
+    .search-bar input{
+        max-width: 200px;
+    }
+}
+
+
+@media all and (max-width: 575px) {
+}

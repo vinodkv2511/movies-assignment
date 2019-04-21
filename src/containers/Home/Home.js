@@ -25,7 +25,7 @@ class Home extends Component {
                         <Button text="Popular" onClick={() => { this.props.setActiveTab(constants.tabs.POPULAR) }} isActive={constants.tabs.POPULAR === this.props.activeTab} />
                         <Button text="Trending" onClick={() => { this.props.setActiveTab(constants.tabs.TRENDING) }} isActive={constants.tabs.TRENDING === this.props.activeTab} />
                         <Button text="Search" onClick={() => { this.props.setActiveTab(constants.tabs.SEARCH) }} isActive={constants.tabs.SEARCH === this.props.activeTab} />
-                        { this.props.activeTab === constants.tabs.SEARCH ?  <SearchBar keyword={this.props.searchKeyword} onChange={(event)=>{this.props.fetchSearchMovies(event.target.value, this.props.searchPage)}}/> : null }
+                        { this.props.activeTab === constants.tabs.SEARCH ?  <SearchBar className="content-header-search-bar" keyword={this.props.searchKeyword} onChange={(event)=>{this.props.fetchSearchMovies(event.target.value, this.props.searchPage)}}/> : null }
                     </div>
                 </div>
                 <div className="content-container">

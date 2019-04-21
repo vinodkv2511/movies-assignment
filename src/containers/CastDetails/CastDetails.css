@@ -92,5 +92,18 @@
     
   }
   @media all and (max-width: 575px) {
+      .cast-details-container{
+          font-size: 0.9em;
+          width:92%;
+      }
+      .cast-details-back-button{
+          width: 92%;
+      }
+      .main-cast-details-container{
+          flex-direction: column;
+      }
+      .main-cast-details-poster{
+          align-self: center;
+      }
   }
   

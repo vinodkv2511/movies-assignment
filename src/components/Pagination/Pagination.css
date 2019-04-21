@@ -38,3 +38,23 @@
     cursor: pointer;
     background: #1aa5f5;
 }
+
+
+@media all and (max-width:575px){
+    .pagination-page{
+        margin: 0px;
+        padding: 6px 2px;
+    }
+
+    .pagination-elipsis{
+        margin: 0px 2px !important;
+    }
+
+    .pagination-page.double-back,
+    .pagination-page.back,
+    .pagination-page.double-forward,
+    .pagination-page.forward
+    {
+        display:none;
+    }
+}

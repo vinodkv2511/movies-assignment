@@ -40,11 +40,8 @@
     width:65%;
     margin: 0px auto;
     padding-top: 40px;
-}
-
-.movie-details-back-button{
     cursor: pointer;
- }
+}
 
 .movie-details-sub-head{
     font-weight: 700;
@@ -90,5 +87,12 @@
     
   }
   @media all and (max-width: 575px) {
+    .movie-details-container{
+        width:92%;
+        font-size:0.9em;
+    }
+    .movie-details-back-button{
+        width: 92%;
+    }
   }
   
