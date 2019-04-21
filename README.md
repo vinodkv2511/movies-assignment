@@ -8,6 +8,8 @@ Before you start this application you need to add a env file in the root directo
 
 You can obtain your API key from [here](https://www.themoviedb.org/settings/api)
 
+live demo of this app is available [here](http://movies.vinodvellampalli.com)
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
