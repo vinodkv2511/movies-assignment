@@ -54,4 +54,11 @@ const clearMovieAndCast = () => {
 
 
 
-export { getMovie, getCast, clearMovieAndCast }
+export { 
+    getMovie,
+    getMovieSuccess,
+    getMovieFailure,
+    getCast,
+    getCastSuccess,
+    getCastFailure, 
+    clearMovieAndCast }
