@@ -2,7 +2,7 @@ import { action_constants } from '../constants'
 import { getPopularMovies as popularService, getTrendingMovies as trendingService, getSearchMovies as searchService } from '../services/homeService/homeService'
 
 
-const changeTab = (tabName)=>{
+const changeTab = (tabName) => {
     return {
         type: action_constants.CHANGE_TAB,
         payload: tabName
@@ -10,16 +10,16 @@ const changeTab = (tabName)=>{
 }
 
 const getPopularMovies = (page) => {
-    return dispatch => {
+    return dispatch =>
         popularService(page)
-        .then(res => res.json())
-        .then(data=> dispatch(getPopularMoviesSuccess(data)))
-        .catch(err => dispatch(getPopularMoviesFailure(err)))
-    }
+            .then(res => res.json())
+            .then(data => dispatch(getPopularMoviesSuccess(data)))
+            .catch(err => dispatch(getPopularMoviesFailure(err)))
+
 }
 
 
-const getPopularMoviesSuccess= (data)=> {
+const getPopularMoviesSuccess = (data) => {
     return {
         type: action_constants.GET_POPULAR_MOVIES_SUCCESS,
         payload: data
@@ -27,7 +27,7 @@ const getPopularMoviesSuccess= (data)=> {
 }
 
 
-const getPopularMoviesFailure= (error)=> {
+const getPopularMoviesFailure = (error) => {
     return {
         type: action_constants.GET_POPULAR_MOVIES_FAILURE,
         payload: error
@@ -35,16 +35,16 @@ const getPopularMoviesFailure= (error)=> {
 }
 
 const getTrendingMovies = (page, timeWindow) => {
-    return dispatch => {
-        trendingService(page,timeWindow)
-        .then(res => res.json())
-        .then(data=> dispatch(getTrendingMoviesSuccess(data)))
-        .catch(err => dispatch(getTrendingMoviesFailure(err)))
-    }
+    return dispatch =>
+        trendingService(page, timeWindow)
+            .then(res => res.json())
+            .then(data => dispatch(getTrendingMoviesSuccess(data)))
+            .catch(err => dispatch(getTrendingMoviesFailure(err)))
+
 }
 
 
-const getTrendingMoviesSuccess= (data)=> {
+const getTrendingMoviesSuccess = (data) => {
     return {
         type: action_constants.GET_TRENDING_MOVIES_SUCCESS,
         payload: data
@@ -52,7 +52,7 @@ const getTrendingMoviesSuccess= (data)=> {
 }
 
 
-const getTrendingMoviesFailure= (error)=> {
+const getTrendingMoviesFailure = (error) => {
     return {
         type: action_constants.GET_TRENDING_MOVIES_FAILURE,
         payload: error
@@ -64,11 +64,12 @@ const getTrendingMoviesFailure= (error)=> {
 const getSearchMovies = (keyword, page) => {
     return dispatch => {
         dispatch(setSearchKeyword(keyword))
-        searchService(keyword, page)
-        .then(res => res.json())
-        .then(data=> dispatch(getSearchMoviesSuccess(data)))
-        .catch(err => dispatch(getSearchMoviesFailure(err)))
+        return searchService(keyword, page)
+            .then(res => res.json())
+            .then(data => dispatch(getSearchMoviesSuccess(data)))
+            .catch(err => dispatch(getSearchMoviesFailure(err)))
     }
+
 }
 
 const setSearchKeyword = (keyword) => {
@@ -79,7 +80,7 @@ const setSearchKeyword = (keyword) => {
 }
 
 
-const getSearchMoviesSuccess= (data)=> {
+const getSearchMoviesSuccess = (data) => {
     return {
         type: action_constants.GET_SEARCH_MOVIES_SUCCESS,
         payload: data
@@ -87,7 +88,7 @@ const getSearchMoviesSuccess= (data)=> {
 }
 
 
-const getSearchMoviesFailure= (error)=> {
+const getSearchMoviesFailure = (error) => {
     return {
         type: action_constants.GET_SEARCH_MOVIES_FAILURE,
         payload: error
@@ -96,4 +97,15 @@ const getSearchMoviesFailure= (error)=> {
 
 
 
-export { changeTab, getPopularMovies, getTrendingMovies, getSearchMovies }
+export {
+    changeTab,
+    getPopularMovies,
+    getPopularMoviesSuccess,
+    getPopularMoviesFailure,
+    getTrendingMovies,
+    getTrendingMoviesSuccess,
+    getTrendingMoviesFailure,
+    getSearchMovies,
+    getSearchMoviesSuccess,
+    getSearchMoviesFailure
+}
