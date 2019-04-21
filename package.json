@@ -14,11 +14,13 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
-    "react-test-renderer": "^16.8.6"
+    "fetch-mock": "^7.3.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-test-renderer": "^16.8.6",
+    "redux-mock-store": "^1.5.3"
   },
   "scripts": {
     "start": "react-scripts start",
