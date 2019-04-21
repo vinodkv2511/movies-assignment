@@ -72,7 +72,7 @@ class Paginatio extends Component {
         else {
             let pages = []
             for (let i = 1; i <= pageCount; i++) {
-                pages.push(i)
+                pages.push(<div className={"pagination-page".concat(activePage === i ? " active" : "")} onClick={this.handleClick} data-page={i} key={i}>{i}</div>)
             }
             return pages;
         }
