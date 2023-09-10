@@ -14,7 +14,8 @@ const constants = {
             POPULAR: "Popular",
             TRENDING: "Trending",
             SEARCH: "Search"
-        }
+        },
+        PAGINATION_API_LIMIT: 500
     },
 
     posterSizes: {

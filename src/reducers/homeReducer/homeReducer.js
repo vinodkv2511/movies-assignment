@@ -1,7 +1,7 @@
-import consts, {action_constants} from '../../constants'
+import constants, {action_constants, } from '../../constants'
 
 const initialState = {
-    activeTab: consts.tabs.POPULAR,
+    activeTab: constants.tabs.POPULAR,
     popularMovies: [],
     popularMoviesCurrentPage: 1,
     trendingMovies: [],
@@ -10,6 +10,11 @@ const initialState = {
     searchMoviesCurrentPage: 1,
     searchMovies: []
 }
+
+const getPageLimit = (limit) => {
+    return limit < constants.stringConstants.PAGINATION_API_LIMIT ? limit : constants.stringConstants.PAGINATION_API_LIMIT;
+} 
+
 const homeReducer = (state= initialState, action) => {
     let newState = {}
     switch (action.type) {
@@ -21,7 +26,7 @@ const homeReducer = (state= initialState, action) => {
             newState = {...state}
             newState.popularMovies = [...action.payload.results]
             newState.popularMoviesCurrentPage = action.payload.page
-            newState.popularMoviesPageCount = action.payload.total_pages
+            newState.popularMoviesPageCount = getPageLimit(action.payload.total_pages);
             break
         case action_constants.GET_POPULAR_MOVIES_FAILURE:
             newState = {...state}
@@ -31,7 +36,7 @@ const homeReducer = (state= initialState, action) => {
             newState = {...state}
             newState.trendingMovies = [...action.payload.results]
             newState.trendingMoviesCurrentPage = action.payload.page
-            newState.trendingMoviesPageCount = action.payload.total_pages
+            newState.trendingMoviesPageCount = getPageLimit(action.payload.total_pages)
             break
         case action_constants.GET_TRENDING_MOVIES_FAILURE:
             newState = {...state}
@@ -45,7 +50,7 @@ const homeReducer = (state= initialState, action) => {
             newState = {...state}
             newState.searchMovies = [...action.payload.results]
             newState.searchMoviesCurrentPage = action.payload.page
-            newState.searchMoviesPageCount = action.payload.total_pages
+            newState.searchMoviesPageCount = getPageLimit(action.payload.total_pages)
             break
         case action_constants.GET_SEARCH_MOVIES_FAILURE:
             console.log(action.payload)

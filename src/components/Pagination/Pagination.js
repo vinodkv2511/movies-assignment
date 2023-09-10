@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Pagination.css'
 
-class Paginatio extends Component {
+class Pagination extends Component {
 
     constructor(props){
         super(props)
@@ -137,4 +137,4 @@ class Paginatio extends Component {
     }
 }
 
-export default Paginatio;
+export default Pagination;
