@@ -1,0 +1,47 @@
+.percentage-indicator {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  aspect-ratio: 1;
+  flex-shrink: 0;
+}
+
+.percentage-indicator.safe {
+  background: conic-gradient(green 75%, gray 0)
+}
+
+.percentage-indicator.warning {
+  background: conic-gradient(orange 75%, gray 0)
+}
+
+.percentage-indicator.danger {
+  background: conic-gradient(red 75%, gray 0)
+}
+
+.percentage-indicator .pi-inner-circle {
+  background-color: white;
+  border-radius: 50%; 
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  flex-shrink: 0;
+}
+
+.percentage-indicator .pi-inner-circle span {
+  font-weight: 700;
+  font-size: 0.9rem;
+  vertical-align: center;
+  margin-block-start: 0.125rem;
+}
+
+.percentage-indicator .pi-inner-circle span::after {
+  content: '%';
+  vertical-align: super;
+  font-size: 0.4rem;
+  font-weight: 700;
+  margin-inline-start: 0.0625rem;
+}
