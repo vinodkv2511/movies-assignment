@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import MoviesList from '../../components/MoviesList/MoviesList';
 import Button from '../../components/Button/Button';
 import constants from '../../constants';

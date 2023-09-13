@@ -1,4 +1,4 @@
-import React from 'react';
+
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import MovieCard from '../MovieCard/MovieCard';
@@ -9,9 +9,10 @@ const MoviesList = (props) => {
     props.movies.forEach(movie => {
         movieCards.push(<Link to={"/movie/"+movie.id} key={movie.id}><MovieCard movie={movie} /> </Link>)
     })
+
     return (
         <div className="movies-list-container">
-            {movieCards}
+            {movieCards.length ? movieCards : 'No items to show.'}
         </div>
     );
 };

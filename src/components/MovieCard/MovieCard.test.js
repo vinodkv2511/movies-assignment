@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { shallow } from 'enzyme'
 import ISO6391 from 'iso-639-1'
 

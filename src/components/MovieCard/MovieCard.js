@@ -1,4 +1,4 @@
-import React from 'react'
+
 import PropTypes from 'prop-types'
 import ISO6391 from 'iso-639-1'
 import constants, { url_constants } from '../../constants'

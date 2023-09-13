@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import {  useEffect } from 'react';
 import { connect } from 'react-redux';
 import ISOLang from 'iso-639-1';
 
@@ -6,21 +6,30 @@ import { getMovie, getCast, clearMovieAndCast } from '../../actions/movieActions
 import './MovieDetails.css'
 import SmallCard from '../../components/SmallCard/SmallCard';
 import constants, { url_constants } from '../../constants'
+import { useNavigate, useParams } from 'react-router-dom';
 
 
-class MovieDetails extends Component {
+const  MovieDetails = (props) => {
 
-    componentDidMount() {
-        this.props.getMovieDetails(this.props.match.params.movie_id)
-        this.props.getMovieCast(this.props.match.params.movie_id)
-    }
+    const {movie_id} = useParams();
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+        props.getMovieDetails(movie_id)
+        props.getMovieCast(movie_id)
+
+        return () => {
+            props.clearMovieDetails()
+        }
+    }, [movie_id])
 
 
-    getGenreText = () => {
+
+    const getGenreText = () => {
         let genres = ""
-        for (let index in this.props.movie.genres) {
-            genres = genres.concat(this.props.movie.genres[index].name)
-            if (index < this.props.movie.genres.length - 1) {
+        for (let index in props.movie.genres) {
+            genres = genres.concat(props.movie.genres[index].name)
+            if (index < props.movie.genres.length - 1) {
                 genres = genres.concat(", ")
             }
         }
@@ -28,8 +37,8 @@ class MovieDetails extends Component {
         return genres
     }
 
-    getCastCards = () => {
-        let actors = this.props.cast;
+    const getCastCards = () => {
+        let actors = props.cast;
         let actorCards = []
         actors.forEach(actor => {
             actorCards.push(
@@ -41,54 +50,45 @@ class MovieDetails extends Component {
         return actorCards;
     }
 
+    if(!props.movie?.title) {
+        return 'loading...';
+    }
 
-    render() {
-        window.scrollTo(0, 0)
-        if (this.props.movie.title) {
-            return (
-                <div>
-                    <div className="movie-details-back-button" onClick={() => this.props.history.goBack()} ><i className="fas fa-arrow-left"></i> Back</div>
-                    <div className="movie-details-container">
-                        <img className="main-movie-details-backdrop" alt="poster" src={url_constants.IMAGE_BASE + constants.backdropSizes.LARGE + this.props.movie['backdrop_path']} />
-                        <div className="main-movie-details-container">
-                            <img className="main-movie-details-poster" alt="poster" src={url_constants.IMAGE_BASE + constants.posterSizes.MEDIUM + this.props.movie['poster_path']} />
-                            <div className="movie-details-side-container">
-                                <h1 className="movie-details-title">{this.props.movie.title}</h1>
-                                <div className="movie-details-year-runtime">
-                                    <p><span className="movie-details-sub-head">Year: </span>{new Date(this.props.movie.release_date).getFullYear()}</p>
-                                    <p><span className="movie-details-sub-head">Runtime: </span>{this.props.movie.runtime} <span> minutes</span></p>
-                                </div>
-                                <p><span className="movie-details-sub-head">Language: </span>{ISOLang.getName(this.props.movie.original_language)}</p>
-                                <p><span className="movie-details-sub-head">User Score: </span>{this.props.movie.vote_average * 10 + "%"}</p>
-                                <p>
-                                    <span className="movie-details-sub-head">Genres: </span>
-                                    {this.getGenreText()}
-                                </p>
-                                <p>
-                                    <span className="movie-details-sub-head">Overview: </span>
-                                    {this.props.movie.overview}
-                                </p>
-
-                            </div>
+    return (
+        <div>
+            <div className="movie-details-back-button" onClick={() => navigate(-1)} ><i className="fas fa-arrow-left"></i> Back</div>
+            <div className="movie-details-container">
+                <img className="main-movie-details-backdrop" alt="poster" src={url_constants.IMAGE_BASE + constants.backdropSizes.LARGE + props.movie['backdrop_path']} />
+                <div className="main-movie-details-container">
+                    <img className="main-movie-details-poster" alt="poster" src={url_constants.IMAGE_BASE + constants.posterSizes.MEDIUM + props.movie['poster_path']} />
+                    <div className="movie-details-side-container">
+                        <h1 className="movie-details-title">{props.movie.title}</h1>
+                        <div className="movie-details-year-runtime">
+                            <p><span className="movie-details-sub-head">Year: </span>{new Date(props.movie.release_date).getFullYear()}</p>
+                            <p><span className="movie-details-sub-head">Runtime: </span>{props.movie.runtime} <span> minutes</span></p>
                         </div>
-                        <h2 className="movie-details-side-header">Cast</h2>
-                        <div className="movie-details-cast-container">
-                            {this.getCastCards()}
-                        </div>
+                        <p><span className="movie-details-sub-head">Language: </span>{ISOLang.getName(props.movie.original_language)}</p>
+                        <p><span className="movie-details-sub-head">User Score: </span>{props.movie.vote_average * 10 + "%"}</p>
+                        <p>
+                            <span className="movie-details-sub-head">Genres: </span>
+                            {getGenreText()}
+                        </p>
+                        <p>
+                            <span className="movie-details-sub-head">Overview: </span>
+                            {props.movie.overview}
+                        </p>
 
                     </div>
                 </div>
-            );
-        }
-        else {
-            return "loading..."
-        }
+                <h2 className="movie-details-side-header">Cast</h2>
+                <div className="movie-details-cast-container">
+                    {getCastCards()}
+                </div>
 
-    }
+            </div>
+        </div>
+    );
 
-    componentWillUnmount() {
-        this.props.clearMovieDetails()
-    }
 }
 
 const mapStateToProps = (state) => {
